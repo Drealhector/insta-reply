@@ -8,5 +8,4 @@ dist/
 *.log
 .DS_Store
 .vercel
-convex/_generated/
 *.tsbuildinfo
