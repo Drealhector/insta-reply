@@ -1,0 +1,143 @@
+@import url("https://rsms.me/inter/inter.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme — soft warm white surface, ink text */
+    --bg: 250 250 249;          /* paper */
+    --surface: 255 255 255;     /* cards */
+    --surface-2: 245 245 244;   /* hover / subtle */
+    --border: 231 229 228;
+    --fg: 10 10 10;
+    --fg-muted: 115 115 115;
+    --fg-faint: 163 163 163;
+    --hover: 245 245 244;
+    --accent-soft: 254 226 226;
+    --ok-soft: 220 252 231;
+    --warn-soft: 254 243 199;
+    color-scheme: light;
+  }
+  .dark {
+    /* Dark theme — true black, off-white text, generous contrast */
+    --bg: 10 10 10;
+    --surface: 23 23 23;
+    --surface-2: 38 38 38;
+    --border: 38 38 38;
+    --fg: 250 250 249;
+    --fg-muted: 163 163 163;
+    --fg-faint: 115 115 115;
+    --hover: 38 38 38;
+    --accent-soft: 69 10 10;
+    --ok-soft: 5 46 22;
+    --warn-soft: 69 26 3;
+    color-scheme: dark;
+  }
+  html {
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+  }
+  body {
+    background: rgb(var(--bg));
+    color: rgb(var(--fg));
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 h-9 px-4 rounded-md text-sm font-semibold bg-fg text-bg hover:opacity-90 active:opacity-80 transition disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 h-9 px-4 rounded-md text-sm font-medium border border-border bg-surface text-fg hover:bg-hover transition disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 h-9 px-3 rounded-md text-sm font-medium text-fg hover:bg-hover transition disabled:opacity-50;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 h-9 px-4 rounded-md text-sm font-medium border border-border bg-surface text-accent hover:bg-accent-50 transition;
+  }
+  .btn-icon {
+    @apply inline-flex items-center justify-center w-8 h-8 rounded-md text-fg-muted hover:bg-hover hover:text-fg transition;
+  }
+
+  .card {
+    @apply bg-surface border border-border rounded-xl shadow-card;
+  }
+  .card-pad {
+    @apply p-5;
+  }
+
+  .input {
+    @apply w-full h-9 rounded-md border border-border bg-surface text-fg px-3 text-sm placeholder:text-fg-faint focus:outline-none focus:border-fg focus:ring-2 focus:ring-fg/10 transition;
+  }
+  .textarea {
+    @apply w-full rounded-md border border-border bg-surface text-fg px-3 py-2 text-sm placeholder:text-fg-faint focus:outline-none focus:border-fg focus:ring-2 focus:ring-fg/10 transition resize-y;
+  }
+  .label {
+    @apply block text-xs font-semibold uppercase tracking-wide text-fg-muted mb-1.5;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-md border border-border bg-surface2 px-2 py-0.5 text-2xs font-medium text-fg-muted;
+  }
+  .chip-ink {
+    @apply inline-flex items-center gap-1 rounded-md bg-fg text-bg px-2 py-0.5 text-2xs font-semibold;
+  }
+  .chip-ok {
+    @apply inline-flex items-center gap-1 rounded-md bg-ok-soft text-ok px-2 py-0.5 text-2xs font-semibold;
+  }
+  .chip-warn {
+    @apply inline-flex items-center gap-1 rounded-md bg-warn-soft text-warn px-2 py-0.5 text-2xs font-semibold;
+  }
+  .chip-accent {
+    @apply inline-flex items-center gap-1 rounded-md bg-accent-50 text-accent px-2 py-0.5 text-2xs font-semibold;
+  }
+
+  .h1 {
+    @apply text-3xl font-bold tracking-tightest text-fg;
+  }
+  .h2 {
+    @apply text-xl font-bold tracking-tight text-fg;
+  }
+  .h3 {
+    @apply text-sm font-semibold uppercase tracking-wide text-fg-muted;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 h-9 px-3 rounded-md text-sm font-medium text-fg-muted hover:bg-hover hover:text-fg transition;
+  }
+  .nav-item-active {
+    @apply flex items-center gap-3 h-9 px-3 rounded-md text-sm font-semibold bg-fg text-bg;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded-md bg-surface2;
+  }
+
+  .dot {
+    @apply w-2 h-2 rounded-full;
+  }
+  .dot-live {
+    @apply w-2 h-2 rounded-full bg-ok animate-pulse-dot;
+  }
+
+  /* Switch */
+  .switch {
+    @apply relative inline-flex h-5 w-9 items-center rounded-full transition cursor-pointer;
+  }
+  .switch[data-state="off"] {
+    @apply bg-border;
+  }
+  .switch[data-state="on"] {
+    @apply bg-fg;
+  }
+  .switch-thumb {
+    @apply inline-block h-3.5 w-3.5 rounded-full bg-bg shadow transition transform translate-x-1;
+  }
+  .switch[data-state="on"] .switch-thumb {
+    @apply translate-x-5;
+  }
+}
